@@ -1,5 +1,5 @@
 
-import { PawPrint, Dna, Banknote, ArrowTrendingUp } from "lucide-react";
+import { PawPrint, Dna, Banknote, TrendingUp } from "lucide-react";
 import StatCard from "@/components/dashboard/StatCard";
 import RecentAnimals from "@/components/dashboard/RecentAnimals";
 import SalesChart from "@/components/dashboard/SalesChart";
@@ -42,7 +42,7 @@ export default function Dashboard() {
         <StatCard 
           title="Ganancia Promedio" 
           value="18%" 
-          icon={<ArrowTrendingUp className="h-4 w-4" />} 
+          icon={<TrendingUp className="h-4 w-4" />} 
           change={2.1}
         />
       </div>
