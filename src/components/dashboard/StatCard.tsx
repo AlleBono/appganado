@@ -22,12 +22,12 @@ export default function StatCard({
 }: StatCardProps) {
   return (
     <Card className={cn(
-      "overflow-hidden backdrop-blur-sm animate-float relative before:absolute before:inset-0 before:rounded-lg before:bg-gradient-to-r before:from-white/10 before:to-transparent before:opacity-30 before:content-[''] before:z-0",
+      "overflow-hidden border-l-4 shadow-md relative before:absolute before:inset-0 before:rounded-lg before:bg-gradient-to-r before:from-white/10 before:to-transparent before:opacity-30 before:content-[''] before:z-0",
       className
     )}>
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2 relative z-10">
         <CardTitle className="text-sm font-medium">{title}</CardTitle>
-        <div className="h-10 w-10 bg-primary/20 rounded-full flex items-center justify-center text-primary animate-pulse-gentle shadow-inner">
+        <div className="h-10 w-10 bg-primary/20 rounded-full flex items-center justify-center text-primary shadow-inner">
           {icon}
         </div>
       </CardHeader>
