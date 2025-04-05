@@ -109,6 +109,14 @@ export default {
         "fade-in": {
           '0%': { opacity: '0', transform: 'translateY(10px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        "shimmer": {
+          '0%': { backgroundPosition: '-200% 0' },
+          '100%': { backgroundPosition: '200% 0' },
+        },
+        "rotate-glow": {
+          '0%': { transform: 'rotate(0deg)' },
+          '100%': { transform: 'rotate(360deg)' },
         }
       },
       animation: {
@@ -117,10 +125,13 @@ export default {
         "pulse-gentle": "pulse-gentle 3s infinite",
         "float": "float 5s ease-in-out infinite",
         "fade-in": "fade-in 0.5s ease-out forwards",
+        "shimmer": "shimmer 6s infinite linear",
+        "rotate-glow": "rotate-glow 12s linear infinite"
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+        'shimmer': 'linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.2) 25%, rgba(255,255,255,0.2) 75%, transparent 100%)',
       },
     },
   },
