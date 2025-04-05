@@ -104,4 +104,30 @@
   .stat-card {
     @apply bg-gradient-to-br from-white to-secondary/30 rounded-xl p-4 shadow-md;
   }
+
+  .dashboard-title {
+    @apply text-gradient-primary font-bold;
+  }
+
+  .text-gradient-primary {
+    @apply bg-gradient-to-br from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent;
+  }
+  
+  .hover-scale {
+    @apply transition-transform duration-200 hover:scale-105;
+  }
+  
+  .card-glow {
+    @apply relative overflow-hidden;
+  }
+  
+  .card-glow::after {
+    @apply content-[''] absolute inset-0 rounded-xl bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 transition-opacity duration-1000;
+    animation: cardGlow 3s infinite;
+  }
+  
+  @keyframes cardGlow {
+    0%, 100% { opacity: 0; transform: translateX(-100%); }
+    50% { opacity: 0.5; transform: translateX(100%); }
+  }
 }

@@ -21,15 +21,15 @@ export default function StatCard({
   className 
 }: StatCardProps) {
   return (
-    <Card className={cn("overflow-hidden", className)}>
+    <Card className={cn("overflow-hidden backdrop-blur-sm animate-float", className)}>
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
         <CardTitle className="text-sm font-medium">{title}</CardTitle>
-        <div className="h-8 w-8 bg-primary/20 rounded-full flex items-center justify-center text-primary">
+        <div className="h-10 w-10 bg-primary/20 rounded-full flex items-center justify-center text-primary animate-pulse-gentle">
           {icon}
         </div>
       </CardHeader>
       <CardContent>
-        <div className="text-2xl font-bold">{value}</div>
+        <div className="text-3xl font-bold">{value}</div>
       </CardContent>
       {typeof change !== 'undefined' && (
         <CardFooter className="pt-0">
