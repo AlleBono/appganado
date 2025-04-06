@@ -13,7 +13,8 @@ import {
   Calendar,
   Settings,
   ChevronLeft,
-  ChevronRight
+  ChevronRight,
+  Trees
 } from 'lucide-react';
 
 type SidebarItemProps = {
@@ -23,6 +24,7 @@ type SidebarItemProps = {
   active?: boolean;
   collapsed?: boolean;
   onClick?: () => void;
+  imageSrc?: string;
 };
 
 const SidebarItem = ({ 
@@ -31,18 +33,25 @@ const SidebarItem = ({
   to, 
   active, 
   collapsed, 
-  onClick 
+  onClick,
+  imageSrc
 }: SidebarItemProps) => {
   return (
     <Link 
       to={to} 
       className={cn(
-        "flex items-center gap-3 px-3 py-2 rounded-md transition-all duration-200 hover:bg-primary/10 group",
+        "flex items-center gap-3 px-3 py-2 rounded-md transition-all duration-200 hover:bg-primary/10 group relative",
         active ? "bg-primary/15 text-primary font-medium" : "text-muted-foreground"
       )}
       onClick={onClick}
     >
-      <Icon className="w-5 h-5" />
+      {imageSrc ? (
+        <div className="w-5 h-5 rounded-full overflow-hidden flex-shrink-0">
+          <img src={imageSrc} alt={label} className="w-full h-full object-cover" />
+        </div>
+      ) : (
+        <Icon className="w-5 h-5" />
+      )}
       {!collapsed && <span className="text-sm">{label}</span>}
       {collapsed && (
         <div className="absolute left-full rounded-md px-2 py-1 ml-6 bg-primary text-primary-foreground text-xs invisible opacity-0 -translate-x-3 transition-all group-hover:visible group-hover:opacity-100 group-hover:translate-x-0">
@@ -56,6 +65,9 @@ const SidebarItem = ({
 export default function Sidebar() {
   const [collapsed, setCollapsed] = useState(false);
   const pathname = window.location.pathname;
+
+  // Farm banner image at the top of the sidebar
+  const farmBannerImage = "/farm-banner.jpg";
 
   return (
     <div className={cn(
@@ -72,6 +84,19 @@ export default function Sidebar() {
         {collapsed && <PawPrint className="h-6 w-6 text-primary mx-auto" />}
       </div>
       
+      {!collapsed && (
+        <div className="relative h-32 overflow-hidden">
+          <img 
+            src={farmBannerImage} 
+            alt="Farm" 
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
+            <h2 className="text-white font-bold text-lg">Mi Hacienda</h2>
+          </div>
+        </div>
+      )}
+      
       <div className="flex-1 py-4 flex flex-col gap-1 px-2 overflow-y-auto">
         <SidebarItem 
           icon={LayoutDashboard} 
@@ -81,11 +106,11 @@ export default function Sidebar() {
           collapsed={collapsed}
         />
         <SidebarItem 
-          icon={PawPrint} 
           label="Animales" 
           to="/animals" 
           active={pathname === '/animals'} 
           collapsed={collapsed}
+          imageSrc="/cattle-icon.jpg"
         />
         <SidebarItem 
           icon={Dna} 
@@ -121,6 +146,14 @@ export default function Sidebar() {
           to="/notifications" 
           active={pathname === '/notifications'} 
           collapsed={collapsed}
+        />
+        <SidebarItem 
+          icon={Trees} 
+          label="Haciendas" 
+          to="/farms" 
+          active={pathname === '/farms'} 
+          collapsed={collapsed}
+          imageSrc="/farm-icon.jpg"
         />
       </div>
       
