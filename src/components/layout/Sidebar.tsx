@@ -18,7 +18,7 @@ import {
 } from 'lucide-react';
 
 type SidebarItemProps = {
-  icon: React.ElementType;
+  icon?: React.ElementType;
   label: string;
   to: string;
   active?: boolean;
@@ -50,7 +50,7 @@ const SidebarItem = ({
           <img src={imageSrc} alt={label} className="w-full h-full object-cover" />
         </div>
       ) : (
-        <Icon className="w-5 h-5" />
+        Icon && <Icon className="w-5 h-5" />
       )}
       {!collapsed && <span className="text-sm">{label}</span>}
       {collapsed && (
@@ -106,6 +106,7 @@ export default function Sidebar() {
           collapsed={collapsed}
         />
         <SidebarItem 
+          icon={PawPrint}
           label="Animales" 
           to="/animals" 
           active={pathname === '/animals'} 
